@@ -677,8 +677,11 @@ $.ui.plugin.add("resizable", "containment", {
 			self.containerPosition = element.position();
 			self.containerSize = { height: (element.innerHeight() - p[3]), width: (element.innerWidth() - p[1]) };
 
-			var co = self.containerOffset, ch = self.containerSize.height,	cw = self.containerSize.width,
-						width = ($.ui.hasScroll(ce, "left") ? ce.scrollWidth : cw ), height = ($.ui.hasScroll(ce) ? ce.scrollHeight : ch);
+			var co = self.containerOffset,
+				ch = co.top + self.containerSize.height,
+				cw = co.left + self.containerSize.width,
+				width = ($.ui.hasScroll(ce, "left") ? ce.scrollWidth : cw ),
+				height = ($.ui.hasScroll(ce) ? ce.scrollHeight : ch);
 
 			self.parentData = {
 				element: ce, left: co.left, top: co.top, width: width, height: height
